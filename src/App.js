@@ -1,10 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './Components/NavBar/NavBar.js';
+import ItemListContainer from './Components/NavBar/ItemListContainer.js';
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <Header />
+    <>
+    <div className='container-total'>
+      <Header />
+      <ItemListContainer props='4'/>
+    </div>
+    </>
   );
 }
 

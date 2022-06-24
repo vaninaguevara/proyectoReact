@@ -2,6 +2,7 @@ import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./NavBar.css";
 import logo from "./../../emunah-logo.jpg";
+import CartWidget from "./CartWidget";
 
 const Header = () => {
     return(
@@ -17,7 +18,7 @@ const Header = () => {
                 <a href="">PRODUCTOS</a>
                 <a href="">SOBRE MI</a>
                 <a href="">CONTACTO</a>
-                <a href="">MI CARRITO <ShoppingCartIcon className="icono-carro"/></a>
+                <a href="">MI CARRITO <CartWidget/></a>
             </nav>
         </header>
     )
