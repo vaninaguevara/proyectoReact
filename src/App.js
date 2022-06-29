@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './Components/NavBar/NavBar.js';
-import ItemListContainer from './Components/NavBar/ItemListContainer.js';
+import ItemListContainer from './Containers/ItemListContainer.js';
 import { Fragment } from 'react';
 
 function App() {

@@ -2,7 +2,7 @@ import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./NavBar.css";
 import logo from "./../../emunah-logo.jpg";
-import CartWidget from "./CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 
 const Header = () => {
     return(
