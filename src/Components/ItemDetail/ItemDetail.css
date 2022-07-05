@@ -1,0 +1,14 @@
+.detalle-container{
+    width: 500px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+.detalle-container .datos-detalle{
+    width: 300px;
+    height: auto;
+}
+.detalle-container .imagen-detalle{
+    width: 400px;
+    height: 400px;
+}
