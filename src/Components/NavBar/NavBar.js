@@ -3,6 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "./NavBar.css";
 import logo from "./../../emunah-logo.jpg";
 import CartWidget from "../CartWidget/CartWidget";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     return(
@@ -15,7 +16,8 @@ const Header = () => {
                 <img src={logo} alt="" />
             </div> 
             <nav>
-                <a href="">PRODUCTOS</a>
+                <NavLink to='/' >Home</NavLink>
+                <NavLink to='/categoria/:id' >Productos</NavLink>
                 <a href="">SOBRE MI</a>
                 <a href="">CONTACTO</a>
                 <a href="">MI CARRITO <CartWidget/></a>

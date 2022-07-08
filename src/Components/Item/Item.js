@@ -9,13 +9,13 @@ import imagenD from './../../assets/default-image.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
+import { Link } from "react-router-dom";
 
 const Item = ({info}) => {
 
     return (
         <div>
-            
+            <Link to={`/detalle/${info.id}`} >
             {/* <Grid item xs={12}> */}
                     <Card sx={{ maxWidth: 345 }}>
                         <CardMedia
@@ -42,7 +42,7 @@ const Item = ({info}) => {
                     </Card>
                 
             {/* </Grid> */}
-            
+            </Link>
         </div>
     )
 }
