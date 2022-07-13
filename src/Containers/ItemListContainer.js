@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import React,{ useState, useEffect} from "react";
-import ItemCount from "../Components/ItemCount/ItemCount";
+
 import ItemList from "../Components/ItemList";
 import { useParams } from "react-router-dom";
 
@@ -25,21 +25,19 @@ const ItemListContainer = ({props}) => {
             },2000);
         });
         if (id){
-            getData.then(res => setData(res.filter(productos.category === id)));
+            getData.then(res => setData(res.filter(product => product.category === id)));
         }else{
             getData.then(res => setData(res));
         }
         
     },[id])
 
-    const onAdd= (cantidad) => {
-        console.log(`compraste ${cantidad} unidades`);
-    }
+    
         
     return (  
         <>
             <h3>Cantidad de items {props}</h3>
-            <ItemCount initial={1} stock={10} onAdd={onAdd}/>
+            {/* <ItemCount initial={1} stock={10} onAdd={onAdd}/> */}
             <Grid container p={2}>
                 
                     <ItemList data= {data} />

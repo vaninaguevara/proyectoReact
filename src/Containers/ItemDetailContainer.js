@@ -9,7 +9,7 @@ const productos = [
     { id: 3, title: "titulo 3" , urlPicture: "./../assets/default.image.png",category: "1", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia ultrices sagittis. Duis in ex finibus, lobortis quam sit amet, pellentesque tortor. Donec gravida tincidunt tristique", price: "$10"},
     { id: 4, title: "titulo 4" , urlPicture: "./../assets/default.image.png",category: "3", descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia ultrices sagittis. Duis in ex finibus, lobortis quam sit amet, pellentesque tortor. Donec gravida tincidunt tristique", price: "$10"},
     { id: 5, title: "titulo 5" , urlPicture: "./../assets/default.image.png", category: "1",descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia ultrices sagittis. Duis in ex finibus, lobortis quam sit amet, pellentesque tortor. Donec gravida tincidunt tristique", price: "$10"},
-    ]
+];
       
 
 const ItemDetailContainer = () => {
@@ -24,8 +24,8 @@ const ItemDetailContainer = () => {
                 resolve(productos);
             },2000);
         });
-        getData.then(res => setData(res));
-        getData.then(res => setData(res.filter(productos.id === detalle)));
+        // getData.then(res => setData(res));
+        getData.then(res => setData(res.find(product => product.id === parseInt(detalle))));
     },[detalle])
 
     return (

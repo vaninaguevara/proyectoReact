@@ -15,12 +15,13 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<ItemListContainer />}></Route>
-          <Route path='/categoria/:id' element={<ItemListContainer />}></Route>
-          <Route path='/detalle/:detalle' element={<ItemDetailContainer />}></Route>
+          <Route path='/' element={<ItemListContainer />}/>
+          <Route path='/categoria/:2' element={<ItemListContainer />}/>
+          <Route path='/detalle/:detalle' element={<ItemDetailContainer />}/>
+          <Route path='/cart' />
         </Routes>
         <ItemListContainer props='4'/>
-        <ItemDetailContainer />
+        {/* <ItemDetailContainer /> */}
       </BrowserRouter>
     </div>
     </>
