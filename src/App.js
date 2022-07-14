@@ -6,6 +6,9 @@ import { Fragment } from 'react';
 import ItemDetailContainer from './Containers/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ItemDetail from './Components/ItemDetail/ItemDetail';
+import Cart from './Components/Cart/Cart';
+import CartProvider from './Context/CartContext';
+
 
 function App() {
   return (
@@ -14,13 +17,15 @@ function App() {
     <div className='container-total'>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path='/' element={<ItemListContainer />}/>
-          <Route path='/categoria/:2' element={<ItemListContainer />}/>
-          <Route path='/detalle/:detalle' element={<ItemDetailContainer />}/>
-          <Route path='/cart' />
-        </Routes>
-        <ItemListContainer props='4'/>
+        <CartProvider>
+          <Routes>
+            <Route path='/' element={<ItemListContainer />}/>
+            <Route path='/categoria/:2' element={<ItemListContainer />}/>
+            <Route path='/detalle/:detalle' element={<ItemDetailContainer />}/>
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+        </CartProvider>
+        {/* <ItemListContainer props='4'/> */}
         {/* <ItemDetailContainer /> */}
       </BrowserRouter>
     </div>

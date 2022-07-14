@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useContext } from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,8 +10,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom";
+import { cartContext } from "../../Context/CartContext";
 
 const Item = ({info}) => {
+
+    const nombre = useContext(cartContext);
 
     return (
         <div>

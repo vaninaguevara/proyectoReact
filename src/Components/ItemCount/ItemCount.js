@@ -20,6 +20,8 @@ const ItemCount = ({initial, stock,onAdd}) => {
 
     const [contador,setContador] = useState(initial)
 
+    
+
     const handlerClickSumar = () => {
         setContador(contador + 1);
     }
