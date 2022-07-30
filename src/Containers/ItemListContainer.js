@@ -3,8 +3,8 @@ import React,{ useState, useEffect} from "react";
 
 import ItemList from "../Components/ItemList";
 import { useParams } from "react-router-dom";
-import { db } from "./../firebase/firebase";
-import { collection, getDocs, query } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { collection, getDocs, query,where } from "firebase/firestore";
 
 // const productos = [
 //     { id: 1, title: "titulo 1" , urlPicture: "./../assets/default.image.png",category: "2" , descripcion: "DLorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia ultrices sagittis. Duis in ex finibus, lobortis quam sit amet, pellentesque tortor. Donec gravida tincidunt tristique", price: 500},
@@ -20,25 +20,43 @@ const ItemListContainer = ({props}) => {
 
     const {id} = useParams();
 
+    console.log(db);
+
     useEffect(() => {
-        const productos = collection( db , "productos") 
-        getDocs(productos).then((p)=>{
-           const productsList =  p.docs.map((producto)=>{
-            return {
-                id:p.id,
-                ...producto.data()
-            }})
-            setData(productsList);
-        })
+        //const productos = collection( db , 'productos');
+        //const q = query (productos, where ('category','==','2'))
+        
         // const getData = new Promise(resolve => {
         //     setTimeout(() => {
         //         resolve(productos);
         //     },2000);
         // });
+
+        const productos = collection( db , 'productos');
+        
+        getDocs(productos).then(p => {
+            console.log(p)
+            const productsList = p.docs.map(producto =>{     
+                return {
+                    id: producto.id,
+                    ...producto.data(),
+                }})
+                setData(productsList);
+                console.log(productsList)
+        }) 
+        console.log("id: ",id)
         if (id){
-            getDocs.then(res => setData(res.filter(product => product.category === id)));
-        }else{
-            // getDocs.then(res => setData(res));
+            console.log("id: ",id)
+            const q = query (productos, where ('category','==',id));
+            getDocs(q).then(p => {
+                console.log(p)
+                const productsList =  p.docs.map(producto =>{     
+                    return {
+                        id: producto.id,
+                        ...producto.data(),
+                    }})
+                    setData(productsList);
+            }) 
         }
         
     },[id])

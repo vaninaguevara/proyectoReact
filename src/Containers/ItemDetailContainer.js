@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import ItemDetail from "../Components/ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-import { db } from "./../firebase/firebase";
-import { collection, getDocs, query ,where} from "firebase/firestore";
+import { db } from './../firebase/firebase';
+import { doc, collection, getDoc, query ,where} from "firebase/firestore";
 
 
 // const productos = [
@@ -21,14 +21,16 @@ const ItemDetailContainer = () => {
     const {detalle} = useParams();
 
     useEffect(() => {
-        const productos = query(collection( db , "productos"), where("id","===", detalle));
-        getDocs(productos).then((p)=>{
-           const productsList =  p.docs.map((producto)=>{
-            return {
-                id:p.id,
-                ...producto.data()
-            }})
-            setData(productsList);
+        const productos = (collection( db , "productos"));
+        const refDoc = doc(productos,detalle)
+        getDoc(refDoc).then(p=>{
+        //    const productsList =  p.docs.map(producto=>{
+        //     return {
+        //         id:producto.id,
+        //         ...producto.data(),
+        //     }})
+            setData(p.data());
+            
         })
         // const getData = new Promise(resolve => {
         //     setTimeout(() => {

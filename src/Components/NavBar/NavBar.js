@@ -17,10 +17,10 @@ const Header = () => {
             </div> 
             <nav>
                 <NavLink to='/' >Home</NavLink>
-                <NavLink to='/categoria/:id' >Productos</NavLink>
+                <NavLink to='/categoria/2' >Productos</NavLink>
                 <a href="">SOBRE MI</a>
                 <a href="">CONTACTO</a>
-                <a href="">MI CARRITO <CartWidget/></a>
+                <NavLink to='/cart' >MI CARRITO</NavLink>
             </nav>
         </header>
     )
