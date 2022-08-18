@@ -1,0 +1,10 @@
+.carrito-container{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+}

@@ -8,10 +8,20 @@ const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
 
-    const addProduct = (item, nuevaCantidad) => {
-        const newCart = cart.filter(product => product.id !== item.id);
-        newCart.push({...item, cantidad:nuevaCantidad});
-        setCart(newCart);
+    const addProduct = (item, cantidad) => {
+        console.log(item)
+
+        console.log(isInCart(item.id))
+        if (isInCart(item.id)){
+            setCart(cart.map(product => {
+                return product.id === item.id ? { ...product, cantidad: cantidad} : product
+            }));
+            console.log("entra a actiaulizar",cart)
+        }else {
+            setCart([...cart, { ...item,cantidad}])
+            console.log({ ...item,cantidad})
+            console.log("carga uno nuevo",cart)
+        }
     } 
 
     const totalPrice = () => {
@@ -29,7 +39,7 @@ const CartProvider = ({ children }) => {
     const removeProduct = (id) => setCart(cart.filter(product => product.id !== id));
 
     return (
-        <div>
+        
             <Provider value ={{
                 addProduct,
                 clearCart,
@@ -41,7 +51,8 @@ const CartProvider = ({ children }) => {
             }}>
                 {children}
             </Provider>
-        </div>
+        
+        
     )
 }
 

@@ -17,6 +17,7 @@ const ItemDetail = ({data}) => {
     const onAdd= (cantidad) => {
         setGoToCart(true);
         addProduct(data,cantidad);
+        console.log(data)
     };
 
     return (
@@ -26,14 +27,14 @@ const ItemDetail = ({data}) => {
             </Grid>
             <Grid item xs={6} className="datos-detalle">
                 <h1>{data.title}</h1>
-                <h2>{data.descripcion}</h2>
+                <h2>{data.description}</h2>
                 <h2>{data.price}</h2>
-            </Grid>
             {
                 goToCart 
-                ? <Link to='/cart'>Terminar compra</Link>
-                : <ItemCount initial={1} stock={10} onAdd={onAdd}/>
+                ? <Link to='/cart' className="terminarCompra">Terminar compra</Link>
+                : <ItemCount initial={1} stock={10} onAdd={onAdd} className="itemCount"/>
             }
+            </Grid>
         </Grid>
     );
 }

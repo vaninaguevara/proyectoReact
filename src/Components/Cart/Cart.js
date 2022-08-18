@@ -3,8 +3,12 @@ import { cartContext } from '../../Context/CartContext';
 import { Link } from "react-router-dom";
 import ItemCart from './../ItemCart/ItemCart';
 import { useContext} from 'react'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
+import { Grid } from "@mui/material";
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import './Cart.css'
 
 const Cart = () => {
 
@@ -29,18 +33,31 @@ const Cart = () => {
     if (cart.length === 0){
         return (
             <>
-                <p>No hay elementos en el carrito</p>
+                <Typography component="div" variant="h5">
+                    No hay elementos en el carrito
+                </Typography>
                 <Link to='/'> Hacer compras</Link>
             </>
         )
     }
     return(
         <>
-            {
-                cart.map(product => <ItemCart key={product.id} product={product} />)
-            }
-            <p>total: {totalPrice()}</p>
-            <button onClick={finalizarCompra}>Concretar compra</button>
+            <div className='carrito-container'>
+                <Grid container>
+                {
+                    cart.map(product => 
+                    <ItemCart key={product.id} product={product}/>)
+                }
+                </Grid>
+                <Typography component="div" variant="h5">
+                    Total: ${totalPrice()}
+                </Typography>
+                <Link to={`/compra`} className="tarjeta">
+                    <Button variant="outlined" size="medium">
+                        Agregar Datos de Envio
+                    </Button>
+                </Link>
+            </div>
         </>
     )
 }

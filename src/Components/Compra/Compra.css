@@ -1,0 +1,6 @@
+.compra-container{
+    display: flex;
+    justify-content: center;
+    height: 318px;
+    align-items: center;
+}

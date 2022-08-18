@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Link } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
+import "./Item.css"
 
 const Item = ({info}) => {
 
@@ -18,9 +19,9 @@ const Item = ({info}) => {
 
     return (
         <div>
-            <Link to={`/detalle/${info.id}`} >
+            <Link to={`/detalle/${info.id}`} className="tarjeta">
             {/* <Grid item xs={12}> */}
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 345 }} className="card">
                         <CardMedia
                             component="img"
                             alt=""
@@ -32,19 +33,16 @@ const Item = ({info}) => {
                             {info.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            {info.description}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
-                            Precio: {info.price}
+                            Precio: ${info.price}
                             </Typography>
                         </CardContent>
                         <CardActions>
                             <Button size="small">Ver Detalle del producto</Button>
                         </CardActions>
                     </Card>
-                
-            {/* </Grid> */}
             </Link>
         </div>
     )
